@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="demo">
+        <h2>{{fullname}}</h2>
+    </div>
+</body>
+<script type="text/javascript">
+    const demo = new Vue({
+        el: '#demo',
+        data: {
+            fname: 'lebron',
+            lname: 'james'
+        },
+        computed: {
+            fullname: function() {
+                return this.fname + '  ' + this.lname;
+            }
+        }
+
+
+    })
+</script>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div id="demo">
+        <div v-if="books.length">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>書名</th>
+                        <th>出版社</th>
+                        <th>価格</th>
+                        <th>数量</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(item,index) in books">
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.date}}</td>
+                        <td>{{item.price | showprice}}</td>
+                        <td><button :disabled="item.count <=1" @click="de(index)">-</button>{{item.count}} <button @click="pl(index    )">+</button> </td>
+                        <td><button @click=removeBtn(index)>削除</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>{{totalPrice | showprice}}</h2>
+        </div>
+        <h2 v-else>カートは空です</h2>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script src="main.js">
+    </script>
+</body>
+
+
+</html>

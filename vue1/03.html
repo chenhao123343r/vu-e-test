@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="demo">
+        名前:<input type="text" placeholder="First name" v-model="fn"><br> S: <input type="text" placeholder="s" v-model="s"><br> d: <input type="text" placeholder="d" v-model="d"><br>
+        <br> d2: <input type="text" placeholder="d" v-model="d2"><br>
+        <br> d3: <input type="text" placeholder="d" v-model="d3"><br>
+        <p>{{d}}</p>
+        <p>{{d}}</p>
+        <p>{{d}}</p>
+    </div>
+</body>
+<script type="text/javascript">
+    const vm = new Vue({
+        el: '#demo',
+        data: {
+            fn: '啊',
+            s: 'b',
+            d2: 'a b '
+
+        },
+        computed: {
+            //初始化显示的时候，相关的data数据发生改变
+            //计算并返回当前属性值
+
+            d() {
+                return this.fn + ' ' + this.s
+            },
+            d3: {
+                //当需要读取当前属性的回调，根据相关的数据计算并返回当前属性值
+                get() {
+                    return this.fn + ' ' + this.s
+                },
+                //当属性发生改变时回调，更新相关的属性数据
+                set(value) {
+                    const names = value.split(' ')
+                    this.fn = names[0]
+                    this.s = names[1]
+
+                }
+            },
+        },
+
+
+        watch: {
+            fn: function(value) {
+                this.d = value + " " + this.s;
+            }
+        },
+    })
+    vm.$watch('s', function(value) {
+        this.d2 = this.fn + " " + value;
+    })
+</script>
+
+</html>

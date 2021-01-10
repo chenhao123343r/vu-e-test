@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="demo">
+        <h2>{{totalprice}}</h2>
+    </div>
+</body>
+<script type="text/javascript">
+    const demo = new Vue({
+        el: '#demo',
+        data: {
+            book: [{
+                id: 1,
+                name: 'aa',
+                price: 300
+            }, {
+                id: 2,
+                name: 'bb',
+                price: 400
+            }, {
+                id: 3,
+                name: 'cc',
+                price: 700
+            }, {
+                id: 4,
+                name: 'dd',
+                price: 400
+            }, {
+                id: 5,
+                name: 'ee',
+                price: 900
+            }, ]
+        },
+        computed: {
+            totalprice: function() {
+                result = 0;
+                for (let i = 0; i < this.book.length; i++) {
+                    result += this.book[i].price;
+                }
+                return result;
+            }
+        }
+
+
+    })
+</script>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="demo">
+        <input type="text" v-model="searchName">
+        <ul>
+            <li v-for="(p,index) in filterpersons" :key="index"> {{index}}--{{p.name}}--{{p.age}}</li>
+        </ul>
+        <button @click="s(1)">年龄升序</button>
+        <button @click="s(2)">年龄降序</button>
+        <button @click="s(0)">原本顺序</button>
+    </div>
+</body>
+<script type=" text/javascript ">
+    new Vue({
+        el: '#demo',
+        data: {
+            orderType: 0,
+            searchName: '',
+            persons: [{
+                name: 'Tom',
+                age: 108
+            }, {
+                name: 'jack',
+                age: 128
+            }, {
+                name: 'Tim',
+                age: 117
+            }, {
+                name: 'Tam',
+                age: 100
+            }, ]
+        },
+        computed: {
+            filterpersons() {
+                const {
+                    searchName,
+                    persons
+                } = this
+                let fpersons;
+                fpersons = persons.filter(p => p.name.indexOf(searchName) !== -1);
+                if (orderType !== 0) {
+                    fpersons.sort(funtion(p1, p2) {
+                        if (orderType == 2) {
+                            return p2.age - p1.age
+                        } else {
+                            return p1.age - p2.age
+                        }
+                    })
+                }
+                return fpersons
+            }
+        },
+        medthods: {
+            s(orderType) {
+                this.orderType = orderType
+            }
+        }
+
+    })
+</script>
+
+</html>

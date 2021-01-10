@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="demo">
+        <span v-if="isUser">
+            <label for="username">ID</label>
+            <input type="text" id="username" placeholder="ID" key="username">
+        </span>
+        <span v-else="isUser">
+            <label for="email">Email</label>
+            <input type="text" id="email" placeholder="Email" key="email">
+        </span>
+        <button @click="isUser=!isUser">切换</button>
+    </div>
+</body>
+<script type="text/javascript">
+    const demo = new Vue({
+        el: '#demo',
+        data: {
+            isUser: true
+
+        }
+
+
+    })
+</script>
+
+</html>

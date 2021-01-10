@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="demo">
+        <h2 v-if="score>=90">秀</h2>
+        <h2 v-else-if="score>=80 && score < 90">秀</h2>
+        <h2 v-else-if="score>=70 && score　< 80">良</h2>
+        <h2 v-else-if="score>=60 && score　< 70">可</h2>
+        <h2 v-else>不可</h2>
+    </div>
+</body>
+<script type="text/javascript">
+    const demo = new Vue({
+        el: '#demo',
+        data: {
+            score: 55
+        }
+
+
+    })
+</script>
+
+</html>

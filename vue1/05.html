@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+    <style>
+        .aclass {
+            color: red;
+        }
+        
+        .bclass {
+            color: blue;
+            font-size: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo">
+        <p v-if="ok">ok</p>
+        <p v-else> not ok</p>
+        <p v-show="ok">表白成功</p>
+        <p v-show="!ok">表白失败</p>
+        <button @click="ok=!ok">33</button>
+
+    </div>
+</body>
+<script type="text/javascript">
+    const vm = new Vue({
+        el: '#demo',
+        data: {
+            ok: true,
+
+        },
+
+    })
+</script>
+
+</html>

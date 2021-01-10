@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+    <style>
+        .aclass {
+            color: red;
+        }
+        
+        .bclass {
+            color: blue;
+            font-size: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo">
+        <h2> 1.class 绑定::class='xXX'
+        </h2>
+        <p :class="a">顶顶顶顶顶顶顶顶顶</p>
+        <p :class="{aclass:isA,bclass:isB}">顶顶顶顶顶顶顶顶顶</p>
+        <p :style="{color:vcolor,fontSize:fontsize+'px'}">顶顶rrrrrr顶顶顶</p>
+        <button @click="update">33</button>
+        <h2>2 style 绑定</h2>
+    </div>
+</body>
+<script type="text/javascript">
+    const vm = new Vue({
+        el: '#demo',
+        data: {
+            a: 'aclass',
+            isA: true,
+            isB: false,
+            vcolor: 'red',
+            fontsize: 70
+        },
+        methods: {
+            update() {
+                this.isA = false;
+                this.isB = true;
+                this.vcolor = 'blue';
+                this.fontsize = 30
+            }
+        },
+    })
+</script>
+
+</html>

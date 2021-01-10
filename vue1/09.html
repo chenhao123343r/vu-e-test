@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo">
+        <ul>
+            <li @click="btn1(index)" :class="{red:isred ===index}" v-for=" (m,index) in  movies">{{m}}</li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    const demo = new Vue({
+        el: '#demo',
+        data: {
+            isred: -1,
+            movies: ['a', 'b', 'c', 'd']
+        },
+        methods: {
+            btn1: function(index) {
+                this.isred = index;
+            },
+        },
+    })
+</script>
+
+</html>
