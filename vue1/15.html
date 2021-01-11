@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="demo">
+        <!--双向绑定-->
+        <input type="text" :value="message" @input="message= $event.target.value">
+        <h2>{{message}}</h2>
+    </div>
+</body>
+<script type="text/javascript">
+    const demo = new Vue({
+        el: '#demo',
+        data: {
+            message: 'aaa'
+        },
+
+
+
+    })
+</script>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="demo">
+
+        <cpn1></cpn1>
+        <cpn2></cpn2>
+    </div>
+</body>
+<!--父子组件的创建，语法糖-->
+<script type="text/javascript">
+    Vue.component('cpn1', {
+        template: '<div><h2>sup</h2></div>',
+    })
+
+    //root组件
+    const demo = new Vue({
+        el: '#demo',
+        components: {
+            'cpn2': {
+                template: '<div><h2>cpn2</h2></div>'
+            }
+        }
+
+
+    })
+</script>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+</head>
+
+<body>
+
+    <div id="demo">
+        <!-- 单选框练习-->
+        <label for="agree">
+        <input type="checkbox" id="agree" v-model="isAgree">同意协议
+    </label>
+
+        <h2> {{isAgree}}</h2>
+        <button :disabled="isAgree">次へ</button>
+    </div>
+    <div id="demo2">
+        <!-- 多选框练习-->
+
+        <input type="checkbox" value="バスケットボール" v-model="hobbies">バスケットボール
+        <input type="checkbox" value="サッカー" v-model="hobbies">サッカー
+        <input type="checkbox" value="バレーボール" v-model="hobbies">バレーボール
+        <input type="checkbox" value="テニス" v-model="hobbies">テニス
+
+
+        <h2> {{hobbies}}</h2>
+        <!-- 值绑定-->
+
+        <label v-for=" item in ohobbies">
+            <input type="checkbox" :value="item" :id="item" v-model="hobbies">{{item}}
+        </label>
+    </div>
+</body>
+<script type="text/javascript">
+    const demo = new Vue({
+        el: '#demo',
+        data: {
+            isAgree: false
+
+        }
+
+    })
+    const demo2 = new Vue({
+        el: '#demo2',
+        data: {
+            hobbies: [],
+            ohobbies: ['バスケットボール', 'サッカー', 'バレーボール', 'テニス']
+
+        }
+
+    })
+</script>
+
+</html>

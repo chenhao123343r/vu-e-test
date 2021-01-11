@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="demo">
+        <!--lazy修饰符，回车或失去焦点 才更新-->
+        <input type="text" v-model.lazy="message">
+        <h2>{{message}}</h2>
+        <!--number修饰符，转换类型为number-->
+        <input type="number" v-model.number="age">
+
+        <h2>{{typeof age}}</h2>
+        <!--trim修饰符，去空格-->
+        <input type="text" v-model.trim="name">
+        <h2>名前は：{{name}}</h2>
+    </div>
+</body>
+<script type="text/javascript">
+    const demo = new Vue({
+        el: '#demo',
+        data: {
+            message: 'aaa',
+            age: '',
+            name: ' chen  hao '
+        },
+
+
+
+    })
+</script>
+
+</html>
