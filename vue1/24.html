@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="demo">
+        <!--父组件绑定事件，接收使用 增加和减少同时绑定一个-->
+        <cpn @add="changetotal" @sub="changetotal"></cpn>
+        <h2>{{total}}</h2>
+    </div>
+    <!--分离写法-->
+    <template id="cpn">
+      <div>
+        <button @click="add">++</button>
+        <button @click="sub">--</button>
+      </div>
+    </template>
+</body>
+<script>
+    //子组件
+    const cpn = {
+            template: '#cpn',
+            data() {
+                return {
+                    number: 0,
+                };
+            },
+            methods: {
+                add() {
+                    this.number++;
+                    //发射事件到父组件
+                    this.$emit('add', this.number);
+
+                },
+                sub() {
+                    this.number--;
+                    //发射事件到父组件
+                    this.$emit('sub', this.number);
+
+                }
+            }
+        }
+        //父组件
+    const demo = new Vue({
+        el: '#demo',
+        data: {
+            total: 0
+        },
+
+        components: {
+            cpn
+        },
+        methods: {
+            //接收number
+            changetotal(number) {
+                this.total = number;
+            }
+        }
+
+    })
+</script>
+
+</html>

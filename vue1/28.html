@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="demo">
+        <cpn>
+            <!-- 作用域插槽 -->
+            <!-- 通过slot-scope 得到插槽，在调用data得到数组通过方法join用 -分隔开 给数组分成字符串 -->
+            <div slot-scope="slot"><span>
+                {{slot.data.join(' - ')}}
+            </span></div>
+        </cpn>
+    </div>
+    <!--分离写法-->
+    <template id="cpn">
+        <!-- 在插槽中， 将数组给变量data -->
+        <slot :data="pLanguages">
+      <div>
+   　<ul><li v-for="item in  pLanguages">{{item}}</li></ul>
+</slot>
+      </div>
+    </template>
+</body>
+<script>
+    //子组件
+    const cpn = {
+        template: '#cpn',
+        data() {
+            return {
+                pLanguages: ['java', 'PHP', 'HTML', 'Vue'],
+            }
+
+        }
+    }
+
+    //父组件
+    const demo = new Vue({
+        el: '#demo',
+        data: {
+            total: 0
+        },
+
+        components: {
+            cpn
+        },
+
+
+    })
+</script>
+
+</html>

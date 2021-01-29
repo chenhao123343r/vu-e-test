@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="demo">
+        <!--父组件绑定事件，接收使用-->
+        <cpn @itemclick="cpnClick"></cpn>
+    </div>
+    <!--分离写法-->
+    <template id="cpn">
+      <div>
+     <button v-for="item in categories" @click="btnClick(item)">{{item.name}}</button>
+      </div>
+    </template>
+</body>
+<script>
+    const cpn = {
+        template: '#cpn',
+        data() {
+            return {
+                categories: [{
+                    id: 'aaa',
+                    name: '雑誌'
+                }, {
+                    id: 'bbb',
+                    name: 'CD'
+                }, {
+                    id: 'ccc',
+                    name: '家電'
+                }, {
+                    id: 'ddd',
+                    name: 'パソコン'
+                }, ]
+
+            }
+
+        },
+        methods: {
+            btnClick(item) {
+                //子组件向父组件发射请求 itemClick事件名称，item为传参
+                this.$emit('itemclick', item);
+            }
+        }
+    }
+    const demo = new Vue({
+        el: '#demo',
+
+        components: {
+            cpn
+        },
+        methods: {
+            cpnClick(item) {
+                console.log('cpnClick', item);
+            }
+        }
+
+    })
+</script>
+
+</html>

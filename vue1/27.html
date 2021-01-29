@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="demo">
+        <!-- 插槽配合组件，修改组件内的内容 -->
+        <cpn><span slot="b">插槽改变b</span></cpn>
+        <cpn><span slot="a">插槽改变a</span></cpn>
+        <cpn><span slot="c">插槽改变c</span></cpn>
+        <cpn></cpn>
+        <cpn></cpn>
+    </div>
+    <!--分离写法-->
+    <template id="cpn">
+      <div>
+      <!--具名插槽，方便修改插槽内容-->
+        <slot name="a"><span>aaa</span></slot>
+        <slot name="b"><span>bbb</span></slot>
+        <slot name="c"><button >ccc</button></slot>
+      </div>
+    </template>
+</body>
+<script>
+    //子组件
+    const cpn = {
+        template: '#cpn',
+    }
+
+    //父组件
+    const demo = new Vue({
+        el: '#demo',
+        data: {
+            total: 0
+        },
+
+        components: {
+            cpn
+        },
+
+
+    })
+</script>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="demo">
+        <!--以子的变量a2传父的a1 data -->
+        <cpn :a-a2="a1"></cpn>
+    </div>
+    <!--分离写法-->
+    <template id="cpn">
+      <div>
+      <h2>{{aA2}}</h2>
+      </div>
+    </template>
+</body>
+<script>
+    const cpn = {
+        template: '#cpn',
+        //props 父传子，写在子里，数组和对象两种写法。以对象写法为主。
+        //props: ['a2']
+        //类型限制 
+        //props: {
+        //    a2: Array
+        //添加默认值,以及必穿值
+        props: {
+            aA2: {
+                type: String,
+                required: true
+            },
+            // 类型是数组或者对象的时候，默认值必须是一个函数
+            a3: {
+                type: Array,
+                default () {
+                    return []
+                }
+            }
+        }
+    }
+
+    const demo = new Vue({
+        el: '#demo',
+        data: {
+            a1: 'value',
+
+        },
+        components: {
+            cpn
+        }
+
+    })
+</script>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script type="text/javascript" src="./js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="demo">
+        <cpn></cpn>
+        <cpn ref="aaa"></cpn>
+        <cpn></cpn>
+        <cpn></cpn>
+        <button @click="btn1">あああ</button>
+    </div>
+    <!--分离写法-->
+    <template id="cpn">
+      <div>
+        子组件
+      </div>
+    </template>
+</body>
+<script>
+    //子组件
+    const cpn = {
+            template: '#cpn',
+
+            methods: {
+                showMessage() {
+                    console.log('showMessage');
+
+                },
+
+            }
+        }
+        //父组件
+    const demo = new Vue({
+        el: '#demo',
+        data: {
+            total: 0
+        },
+
+        components: {
+            cpn
+        },
+        methods: {
+
+            btn1() {
+                //$children 用的少，拿子的数据或者函数方法
+                //console.log(this.$children);
+                //this.$children[0].showMessage();
+                //2.$refs 默认是空的对象，必须在组件上加ref—="aaa"
+                console.log(this.$refs.aaa);
+            }
+        }
+
+    })
+</script>
+
+</html>
